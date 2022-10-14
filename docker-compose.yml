@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  identity:
+    image: ${DOCKER_REGISTRY-}identity
+    build:
+      context: .
+      dockerfile: Identity/Dockerfile
+    ports:
+     - 5090:443
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80

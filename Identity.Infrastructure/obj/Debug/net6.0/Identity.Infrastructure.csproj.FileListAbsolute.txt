@@ -1,0 +1,17 @@
+D:\Innowise\Identity\Identity.Infrastructure\bin\Debug\net6.0\Identity.Infrastructure.deps.json
+D:\Innowise\Identity\Identity.Infrastructure\bin\Debug\net6.0\Identity.Infrastructure.runtimeconfig.json
+D:\Innowise\Identity\Identity.Infrastructure\bin\Debug\net6.0\Identity.Infrastructure.dll
+D:\Innowise\Identity\Identity.Infrastructure\bin\Debug\net6.0\Identity.Infrastructure.pdb
+D:\Innowise\Identity\Identity.Infrastructure\bin\Debug\net6.0\Identity.Models.dll
+D:\Innowise\Identity\Identity.Infrastructure\bin\Debug\net6.0\Identity.Models.pdb
+D:\Innowise\Identity\Identity.Infrastructure\obj\Debug\net6.0\Identity.Infrastructure.csproj.AssemblyReference.cache
+D:\Innowise\Identity\Identity.Infrastructure\obj\Debug\net6.0\Identity.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Innowise\Identity\Identity.Infrastructure\obj\Debug\net6.0\Identity.Infrastructure.AssemblyInfoInputs.cache
+D:\Innowise\Identity\Identity.Infrastructure\obj\Debug\net6.0\Identity.Infrastructure.AssemblyInfo.cs
+D:\Innowise\Identity\Identity.Infrastructure\obj\Debug\net6.0\Identity.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Innowise\Identity\Identity.Infrastructure\obj\Debug\net6.0\Identity.Infrastructure.csproj.CopyComplete
+D:\Innowise\Identity\Identity.Infrastructure\obj\Debug\net6.0\Identity.Infrastructure.dll
+D:\Innowise\Identity\Identity.Infrastructure\obj\Debug\net6.0\refint\Identity.Infrastructure.dll
+D:\Innowise\Identity\Identity.Infrastructure\obj\Debug\net6.0\Identity.Infrastructure.pdb
+D:\Innowise\Identity\Identity.Infrastructure\obj\Debug\net6.0\Identity.Infrastructure.genruntimeconfig.cache
+D:\Innowise\Identity\Identity.Infrastructure\obj\Debug\net6.0\ref\Identity.Infrastructure.dll
