@@ -11,6 +11,9 @@ builder.Services.ConfigureApplicationServices();
 builder.Services.ConfigureAutoMapper();
 builder.Services.ConfigureIdentityServer(builder.Configuration);
 builder.Services.ConfigureCQRS();   
+builder.Services.ConfigureCaching(builder.Configuration);
+builder.Services.ConfigureElasticsearch(builder.Configuration);
+builder.Services.ConfigureStorage(builder.Configuration);
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -19,7 +22,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
 app.UseIdentityServer();
 

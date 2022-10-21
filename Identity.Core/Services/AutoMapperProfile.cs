@@ -10,6 +10,8 @@ namespace Identity.Core.Services
         {
             CreateMap<UserFormDTO, User>().ReverseMap();
             CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<Avatar, AvatarDTO>().ReverseMap();
+            CreateMap<Avatar, AvatarFormDTO>().ReverseMap();
         }
     }
 }

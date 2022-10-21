@@ -10,6 +10,7 @@ namespace Identity.ServicesConfiguration
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAuthenticationManager, AuthenticationManager>();
+            services.AddScoped<IUserService, UserService>();    
             services.AddRouting(opt => opt.LowercaseUrls = true);
         }
     }

@@ -4,6 +4,7 @@ using Identity.Models.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Logging;
 using System.Net;
+using static System.Net.WebRequestMethods;
 
 namespace Identity.ServicesConfiguration
 {
@@ -13,6 +14,7 @@ namespace Identity.ServicesConfiguration
         {
             services.AddIdentity<User, Role>(options =>
                     {
+                      
                         options.Password.RequireNonAlphanumeric = false;
                         options.Password.RequireDigit = false;
                         options.Password.RequireLowercase = false;
@@ -23,7 +25,7 @@ namespace Identity.ServicesConfiguration
                     .AddDefaultTokenProviders();
 
           
-            services.AddIdentityServer()
+            services.AddIdentityServer(opt => opt.IssuerUri = "http://localhost:5090")
                     .AddAspNetIdentity<User>()
                     .AddInMemoryClients(Configurations.Clients)
                     .AddInMemoryIdentityResources(Configurations.GetIdentityResources)

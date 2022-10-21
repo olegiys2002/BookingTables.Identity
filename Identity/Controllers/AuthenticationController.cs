@@ -9,6 +9,7 @@ namespace Identity.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticationManager _authenticationManager;
+        
         public AuthenticationController(IAuthenticationManager authenticationManager)
         {
             _authenticationManager = authenticationManager;

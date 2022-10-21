@@ -4,21 +4,28 @@ using Identity.Core.IServices;
 using Identity.Models.Models;
 using Identity.Shared;
 using Microsoft.AspNetCore.Identity;
+using Nest;
 
 namespace Identity.Core.Services
 {
     public class AuthenticationManager : IAuthenticationManager
     {
-        private readonly UserManager<User> _userManager;
-        private readonly RoleManager<Role> _roleManager;
-        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public AuthenticationManager(IUnitOfWork unitOfWork,IMapper mapper, UserManager<User> userManager, RoleManager<Role> roleManager)
+        private readonly ICacheService<List<User>> _cacheService;
+        private readonly ICacheService<User> _cacheUserService;
+        private readonly string _userKeyCaching = "userCache";
+        private readonly IElasticClient _elasticClient;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IStorage _storage;
+      
+        public AuthenticationManager(IMapper mapper, ICacheService<User> cacheUserService, ICacheService<List<User>> cacheService, IElasticClient elasticClient, IUnitOfWork unitOfWork, IStorage storage)
         {
-            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _userManager = userManager;
-            _roleManager = roleManager;
+            _cacheService = cacheService;
+            _cacheUserService = cacheUserService;
+            _elasticClient = elasticClient;
+            _unitOfWork = unitOfWork;
+            _storage = storage;
         }
         public async Task<UserDTO> RegisterUserAsync(UserFormDTO userForCreationDTO)
         {
@@ -37,18 +44,27 @@ namespace Identity.Core.Services
                 Image = imageData
             };
 
-            var result = await _userManager.CreateAsync(user,userForCreationDTO.Password);
+            //await _storage.CreateAvatarAsync(userForCreationDTO.AvatarFormDTO.Image);
+            var result = await _unitOfWork.UserRepository.CreateUserAsync(user,userForCreationDTO.Password);
            
             if (result.Succeeded)
             {
-                await _roleManager.CreateAsync(new Role
-                {
-                    Name = "User"
-                });
-                await _userManager.AddToRoleAsync(user,"User");
+                await _unitOfWork.UserRepository.AddToRoleAsync(user,"Admin");
+                await _elasticClient.IndexDocumentAsync(user);
+
+                var userDTO = _mapper.Map<UserDTO>(user);
+
+                await _cacheUserService.CacheItems(user.Id, user);
+                await _cacheService.RemoveCache(_userKeyCaching);
+
+                return userDTO;
             }
-            var userDTO = _mapper.Map<UserDTO>(user);
-            return userDTO;
+
+            else
+            {
+                return null;
+            }
+           
         }
 
     }
