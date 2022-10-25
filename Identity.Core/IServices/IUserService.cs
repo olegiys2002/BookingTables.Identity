@@ -1,6 +1,6 @@
 ﻿using Identity.Core.DTOs;
+using BookingTables.Shared.RequestModels;
 using Identity.Infrastructure.Views;
-using Identity.Shared.RequestModels;
 
 namespace Identity.Core.IServices
 {

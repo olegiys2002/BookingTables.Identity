@@ -1,8 +1,8 @@
 ﻿using Identity.Infrastructure.IRepositories;
 using Identity.Infrastructure.Views;
 using Identity.Models.Models;
-using Identity.Shared.RepositoryExtensions;
-using Identity.Shared.RequestModels;
+using BookingTables.Shared.RepositoriesExtensions;
+using BookingTables.Shared.RequestModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

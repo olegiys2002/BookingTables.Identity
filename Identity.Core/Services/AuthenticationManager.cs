@@ -2,7 +2,7 @@
 using Identity.Core.DTOs;
 using Identity.Core.IServices;
 using Identity.Models.Models;
-using Identity.Shared;
+using BookingTables.Shared;
 using Microsoft.AspNetCore.Identity;
 using Nest;
 

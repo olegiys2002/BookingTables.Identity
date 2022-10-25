@@ -1,6 +1,6 @@
 ﻿using Identity.Core.DTOs;
 using Identity.Core.IServices;
-using Identity.Shared.RequestModels;
+using BookingTables.Shared.RequestModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Identity.Controllers

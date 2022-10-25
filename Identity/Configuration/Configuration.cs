@@ -1,4 +1,5 @@
-﻿using IdentityServer4.Models;
+﻿using IdentityModel;
+using IdentityServer4.Models;
 
 namespace Identity.Configuration
 {
@@ -10,6 +11,7 @@ namespace Identity.Configuration
          {
               new IdentityResources.OpenId(),
               new IdentityResources.Profile()
+           
          };
         public static IEnumerable<Client> Clients =>
         new Client[]
@@ -29,7 +31,13 @@ namespace Identity.Configuration
         public static IEnumerable<ApiScope> ApiScopes =>
          new ApiScope[]
          {
-             new ApiScope("tablesAPI")
+             new ApiScope("tablesAPI", new[]
+             {
+                 JwtClaimTypes.Role,
+                 JwtClaimTypes.Id,
+                 JwtClaimTypes.Name,
+                 JwtClaimTypes.Email
+             })
          };
 
         public static IEnumerable<ApiResource> ApiResources =>
@@ -42,10 +50,7 @@ namespace Identity.Configuration
                 {
                      "tablesAPI"
                 },
-                //ApiSecrets=
-                // {
-                //     new Secret("table_secret".Sha256()),
-                // }
+            
                 
              }
 

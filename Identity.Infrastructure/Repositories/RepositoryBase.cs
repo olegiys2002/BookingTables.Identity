@@ -1,8 +1,7 @@
 ﻿using Identity.Infrastructure.IRepositories;
-using Identity.Shared.RepositoryExtensions;
-using Identity.Shared.RequestModels;
 using Microsoft.EntityFrameworkCore;
-
+using BookingTables.Shared.RepositoriesExtensions;
+using BookingTables.Shared.RequestModels;
 namespace Identity.Infrastructure.Repositories
 {
     public abstract class RepositoryBase<T,K> : IRepositoryBase<T,K> where T : class

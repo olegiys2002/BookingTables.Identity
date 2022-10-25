@@ -3,10 +3,10 @@ using Identity.Core.DTOs;
 using Identity.Core.IServices;
 using Identity.Infrastructure.Views;
 using Identity.Models.Models;
-using Identity.Shared;
-using Identity.Shared.RequestModels;
 using Microsoft.AspNetCore.Identity;
 using Nest;
+using BookingTables.Shared.RequestModels;
+using BookingTables.Shared;
 
 namespace Identity.Core.Services
 {
