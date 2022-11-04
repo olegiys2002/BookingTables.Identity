@@ -10,7 +10,7 @@ namespace Identity.Infrastructure.IRepositories
         Task<User> GetUserAsync(string id);
         Task<Avatar> GetUserAvatarAsync(string id);
         Task DeleteUserAsync(User user);
-        Task UpdateUserAsync(User user);
+        Task<IdentityResult> UpdateUserAsync(User user);
         Task<IdentityResult> CreateUserAsync(User user, string password);
         Task<IdentityResult> AddToRoleAsync(User user, string role);
         Task<List<UserAvatarsDTO>> GetAvatarsWihtUserName();

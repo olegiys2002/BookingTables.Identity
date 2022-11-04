@@ -8,8 +8,7 @@ namespace Identity.ServicesConfiguration
     {
         public static void ConfigureStorage(this IServiceCollection services,IConfiguration configuration)
         {
-            services.Configure<FireStorageOptions>(configuration.GetSection(FireStorageOptions.FireStorageSettings));
-            services.AddSingleton<IStorage, FireStorage>();
+          
         }
     }
 }

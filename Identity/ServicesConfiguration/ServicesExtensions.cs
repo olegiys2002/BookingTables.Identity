@@ -1,6 +1,6 @@
 ﻿using Identity.Core.IServices;
 using Identity.Core.Services;
-using Microsoft.Extensions.DependencyInjection;
+
 
 namespace Identity.ServicesConfiguration
 {
@@ -12,6 +12,7 @@ namespace Identity.ServicesConfiguration
             services.AddScoped<IAuthenticationManager, AuthenticationManager>();
             services.AddScoped<IUserService, UserService>();    
             services.AddRouting(opt => opt.LowercaseUrls = true);
+            services.AddSingleton<IStorage, AzureStorage>();
         }
     }
 }

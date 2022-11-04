@@ -37,7 +37,7 @@ namespace Identity.Infrastructure.Repositories
         {
             return _userManager.AddToRoleAsync(user, role);
         }
-        public Task UpdateUserAsync(User user)
+        public Task<IdentityResult> UpdateUserAsync(User user)
         {
             return _userManager.UpdateAsync(user);
         }

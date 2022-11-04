@@ -1,6 +1,4 @@
-﻿using Firebase.Auth;
-
-namespace Identity.ServicesConfiguration
+﻿namespace Identity.ServicesConfiguration
 {
     public static class AuthorizationExtensions
     {

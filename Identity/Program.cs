@@ -14,6 +14,9 @@ builder.Services.ConfigureCQRS();
 builder.Services.ConfigureCaching(builder.Configuration);
 builder.Services.ConfigureElasticsearch(builder.Configuration);
 builder.Services.ConfigureStorage(builder.Configuration);
+builder.Services.ConfigureAppOptions(builder.Configuration);
+builder.Services.ConfigureMassTransit(builder.Configuration);
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

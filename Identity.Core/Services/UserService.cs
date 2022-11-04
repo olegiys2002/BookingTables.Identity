@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Nest;
 using BookingTables.Shared.RequestModels;
 using BookingTables.Shared;
+using BookingTables.Shared.EventModels;
+using MassTransit;
 
 namespace Identity.Core.Services
 {
@@ -18,8 +20,11 @@ namespace Identity.Core.Services
         private readonly ICacheService<User> _cacheUserService;
         private readonly IElasticClient _elasticClient;
         private readonly UserManager<User> _userManager;
+        private readonly IPublishEndpoint _publishEndpoint;
         private readonly string _userKeyCaching = "userCache";
-        public UserService(IUnitOfWork unitOfWork, IMapper mapper, ICacheService<User> cacheUserService, ICacheService<List<User>> cacheService, IElasticClient elasticClient,UserManager<User> userManager)
+        public UserService(IUnitOfWork unitOfWork, IMapper mapper, ICacheService<User> cacheUserService,
+                           ICacheService<List<User>> cacheService, IElasticClient elasticClient,
+                           UserManager<User> userManager,IPublishEndpoint publishEndpoint)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -27,6 +32,7 @@ namespace Identity.Core.Services
             _cacheService = cacheService;
             _elasticClient = elasticClient;
             _userManager = userManager;
+            _publishEndpoint = publishEndpoint;
         }
         public async Task<string?> DeleteUserAsync(string id)
         {
@@ -130,7 +136,12 @@ namespace Identity.Core.Services
             user.UserName = userForUpdatingDTO.UserName;
             user.Email = userForUpdatingDTO.Email;
 
-            await _unitOfWork.UserRepository.UpdateUserAsync(user);
+            var result = await _unitOfWork.UserRepository.UpdateUserAsync(user);
+
+            if (result.Succeeded)
+            {
+               await _publishEndpoint.Publish(new UserInfo { Id = id, UserName = userForUpdatingDTO.UserName });
+            }
             
             var userDTO = _mapper.Map<UserDTO>(user);
             return userDTO;

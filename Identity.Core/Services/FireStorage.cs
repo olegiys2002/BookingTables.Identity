@@ -13,7 +13,7 @@ namespace Identity.Core.Services
         {
             _storageOptions = options.Value;
         }
-        public async Task CreateAvatarAsync(IFormFile formFile)
+        public async Task UploadAvatarAsync(IFormFile formFile)
         {
             var auth = new FirebaseAuthProvider(new FirebaseConfig(_storageOptions.ApiKey));
             var a = await auth.SignInWithEmailAndPasswordAsync(_storageOptions.AuthEmail, _storageOptions.AuthPassword);

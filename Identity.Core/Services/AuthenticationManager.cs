@@ -3,7 +3,6 @@ using Identity.Core.DTOs;
 using Identity.Core.IServices;
 using Identity.Models.Models;
 using BookingTables.Shared;
-using Microsoft.AspNetCore.Identity;
 using Nest;
 
 namespace Identity.Core.Services
@@ -44,7 +43,7 @@ namespace Identity.Core.Services
                 Image = imageData
             };
 
-            //await _storage.CreateAvatarAsync(userForCreationDTO.AvatarFormDTO.Image);
+            await _storage.UploadAvatarAsync(userForCreationDTO.AvatarFormDTO.Image);
             var result = await _unitOfWork.UserRepository.CreateUserAsync(user,userForCreationDTO.Password);
            
             if (result.Succeeded)

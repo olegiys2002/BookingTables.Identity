@@ -10,6 +10,7 @@ namespace Identity.ServicesConfiguration
         {
             var jwtSettings = configuration.GetSection("JwtSettings");
             string securityKey = jwtSettings.GetSection("secretKey").Value;
+
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

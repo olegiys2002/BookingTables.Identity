@@ -4,6 +4,6 @@ namespace Identity.Core.IServices
 {
     public interface IStorage
     {
-        Task CreateAvatarAsync(IFormFile formFile);
+        Task UploadAvatarAsync(IFormFile formFile);
     }
 }

@@ -36,7 +36,7 @@ namespace Identity.Configuration
                  JwtClaimTypes.Role,
                  JwtClaimTypes.Id,
                  JwtClaimTypes.Name,
-                 JwtClaimTypes.Email
+                 JwtClaimTypes.Email,
              })
          };
 
@@ -50,8 +50,6 @@ namespace Identity.Configuration
                 {
                      "tablesAPI"
                 },
-            
-                
              }
 
          };
