@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: 'afbb233a-2166-4fa0-b775-e59710d5b7d2'
   imageRepository: 'olegiysbookingtablesidentity'
   containerRegistry: 'identityservicee.azurecr.io'
-  dockerfilePath: '$**/Dockerfile'
+  dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
 
 
