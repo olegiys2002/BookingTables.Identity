@@ -6,5 +6,7 @@ namespace Identity.Models.Models
     {
         public Avatar Avatar { get; set; }
         public int AvatarId { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 {
     public static class CORSConfigurationExtensions
     {
-        public static void ConfigureCQRS(this IServiceCollection services)
+        public static void ConfigureCORS(this IServiceCollection services)
         {
             services.AddCors(options =>
             {

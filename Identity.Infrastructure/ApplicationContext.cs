@@ -2,7 +2,6 @@
 using Identity.Models.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 
 namespace Identity.Infrastructure
 {
@@ -17,9 +16,10 @@ namespace Identity.Infrastructure
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<UserAvatarsDTO>().ToView(nameof(UserAvatars)); 
-            builder.Entity<Role>().HasData(new Role { Name = "Admin" , NormalizedName = "Admin"});
+
             builder.Entity<Role>().HasData(new Role { Name = "User", NormalizedName = "User" });
-            
+            builder.Entity<Role>().HasData(new Role { Name = "Admin", NormalizedName = "Admin" });
+
             base.OnModelCreating(builder);
         }
     }

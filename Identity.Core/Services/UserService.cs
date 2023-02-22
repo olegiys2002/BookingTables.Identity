@@ -21,10 +21,11 @@ namespace Identity.Core.Services
         private readonly IElasticClient _elasticClient;
         private readonly UserManager<User> _userManager;
         private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IRequestClient<UserOrdersCheck> _requestClient;
         private readonly string _userKeyCaching = "userCache";
         public UserService(IUnitOfWork unitOfWork, IMapper mapper, ICacheService<User> cacheUserService,
                            ICacheService<List<User>> cacheService, IElasticClient elasticClient,
-                           UserManager<User> userManager,IPublishEndpoint publishEndpoint)
+                           UserManager<User> userManager,IPublishEndpoint publishEndpoint,IRequestClient<UserOrdersCheck> requestClient)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -33,6 +34,7 @@ namespace Identity.Core.Services
             _elasticClient = elasticClient;
             _userManager = userManager;
             _publishEndpoint = publishEndpoint;
+            _requestClient = requestClient;
         }
         public async Task<string?> DeleteUserAsync(string id)
         {

@@ -45,10 +45,18 @@ namespace Identity.Core.Services
 
             await _storage.UploadAvatarAsync(userForCreationDTO.AvatarFormDTO.Image);
             var result = await _unitOfWork.UserRepository.CreateUserAsync(user,userForCreationDTO.Password);
-           
+              
             if (result.Succeeded)
             {
-                await _unitOfWork.UserRepository.AddToRoleAsync(user,"Admin");
+                if (userForCreationDTO.Role == "Admin")
+                {
+                    await _unitOfWork.UserRepository.AddToRoleAsync(user, "Admin");
+                }
+                else
+                {
+                    await _unitOfWork.UserRepository.AddToRoleAsync(user, "User");
+                }
+
                 await _elasticClient.IndexDocumentAsync(user);
 
                 var userDTO = _mapper.Map<UserDTO>(user);

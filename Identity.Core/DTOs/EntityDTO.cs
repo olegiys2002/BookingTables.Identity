@@ -3,5 +3,6 @@
     public class EntityDTO
     {
         public Guid Id { get; set; }
+
     }
 }

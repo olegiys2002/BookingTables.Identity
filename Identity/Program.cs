@@ -10,10 +10,9 @@ builder.Services.ConfigureAuthentication(builder.Configuration);
 builder.Services.ConfigureApplicationServices();
 builder.Services.ConfigureAutoMapper();
 builder.Services.ConfigureIdentityServer(builder.Configuration);
-builder.Services.ConfigureCQRS();   
+builder.Services.ConfigureCORS();   
 builder.Services.ConfigureCaching(builder.Configuration);
 builder.Services.ConfigureElasticsearch(builder.Configuration);
-builder.Services.ConfigureStorage(builder.Configuration);
 builder.Services.ConfigureAppOptions(builder.Configuration);
 builder.Services.ConfigureMassTransit(builder.Configuration);
 
@@ -25,7 +24,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
 app.UseIdentityServer();
 

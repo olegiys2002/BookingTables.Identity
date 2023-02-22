@@ -14,5 +14,6 @@ namespace Identity.Infrastructure.IRepositories
         Task<IdentityResult> CreateUserAsync(User user, string password);
         Task<IdentityResult> AddToRoleAsync(User user, string role);
         Task<List<UserAvatarsDTO>> GetAvatarsWihtUserName();
+        
     }
 }
