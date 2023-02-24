@@ -41,7 +41,7 @@ stages:
         artifact: 'manifests'
         publishLocation: 'pipeline'
 
-- stage: Build
+- stage: Deploy
   displayName: Build and push stage
   dependsOn: Build
   variables:
