@@ -37,12 +37,12 @@ stages:
           $(tag)
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Pipeline.Workspace)/s/kubernetes'
+        targetPath: '$(Pipeline.Workspace)/src/kubernetes'
         artifact: 'manifests'
         publishLocation: 'pipeline'
 
 - stage: Deploy
-  displayName: Build and push stage
+  displayName: Deploy to Dev
   dependsOn: Build
   variables:
    acrsecret: k8sexamplesacrauth
