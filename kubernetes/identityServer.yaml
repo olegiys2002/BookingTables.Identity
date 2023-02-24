@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identity-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+     app: identity
+  template:
+    metadata:
+      labels:
+        app: identity
+    spec: 
+      containers:
+       - env:
+         - name: ASPNETCORE_ENVIRONMENT
+           value: Development
+         - name: ASPNETCORE_URLS
+           value: http://+:80
+         name: identity
+         image: identityservicee.azurecr.io/olegiysbookingtablesidentity:6
+         ports:
+           - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service 
+metadata:
+  name: identity-service
+spec: 
+  selector:
+    app: identity
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 5090
+    targetPort: 80

@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Infrastructure", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Models", "Identity.Models\Identity.Models.csproj", "{21745228-C786-4A0C-A865-4B2CFC1521D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Tests", "Idenity.Tests\Identity.Tests.csproj", "{C2C88DBA-E91B-4CFF-9C36-C68A0DE19296}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Tests", "Idenity.Tests\Identity.Tests.csproj", "{C2C88DBA-E91B-4CFF-9C36-C68A0DE19296}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kubernetes", "kubernetes", "{DB88360D-EAF9-489C-B362-3409C4913ACE}"
+	ProjectSection(SolutionItems) = preProject
+		identityServer.yaml = identityServer.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

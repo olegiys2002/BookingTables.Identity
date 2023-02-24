@@ -3,6 +3,7 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
+EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
@@ -10,7 +11,6 @@ COPY ["Identity/Identity.csproj", "Identity/"]
 COPY ["Identity.Core/Identity.Core.csproj", "Identity.Core/"]
 COPY ["Identity.Infrastructure/Identity.Infrastructure.csproj", "Identity.Infrastructure/"]
 COPY ["Identity.Models/Identity.Models.csproj", "Identity.Models/"]
-COPY ["Identity.Shared/Identity.Shared.csproj", "Identity.Shared/"]
 RUN dotnet restore "Identity/Identity.csproj"
 COPY . .
 WORKDIR "/src/Identity"
