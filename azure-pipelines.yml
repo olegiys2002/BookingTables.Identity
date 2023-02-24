@@ -70,4 +70,4 @@ stages:
            action: 'deploy'
            kubernetesServiceConnection: 'aks-connection'
            namespace: 'default'
-           manifests: $(Pipeline.Workspace)/manifests/identityServer.yml
+           manifests: $(Pipeline.Workspace)/manifests/identityServer.yaml
